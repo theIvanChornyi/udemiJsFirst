@@ -1,1 +1,1 @@
-console.log(3>2 && 2>1);
+console.log('hello world');
