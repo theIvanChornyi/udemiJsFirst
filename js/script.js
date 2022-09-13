@@ -182,3 +182,21 @@
 // }
 
 // console.log(personaMovieDB);
+
+// function getMathResult(a, b) {
+//   if (b <= 0 || typeof b != 'number') {
+//     return a;
+//   }
+//   let string = `${a}`;
+//   for (let i = 2; i <= b; i++) {
+//     const result = a * i;
+//     string += `---${result}`;
+//   }
+//   return string;
+// }
+// console.log(getMathResult(5, 3));
+// console.log(getMathResult(3, 10));
+// console.log(getMathResult(10, 5));
+// console.log(getMathResult(10, '5'));
+// console.log(getMathResult(10, 0));
+// console.log(getMathResult(20, -5));
