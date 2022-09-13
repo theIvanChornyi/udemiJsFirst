@@ -120,3 +120,65 @@
 //   result += '\n';
 // }
 // console.log(result);
+// let numberOfFilms = '',
+//   lastFilm = '',
+//   lastFilmMark = '';
+
+// numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+// const personaMovieDB = {
+//   count: numberOfFilms,
+//   movies: {},
+//   actors: {},
+//   genres: [],
+//   privat: false,
+// };
+
+// for (let i = 0; i < 2; i++) {
+//   lastFilm = prompt('Один из последних посмотреных фильмов', '');
+//   lastFilmMark = +prompt('На сколько оцение его?', '');
+
+//   if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
+//     personaMovieDB.movies[lastFilm] = +lastFilmMark;
+//   } else {
+//     i--;
+//   }
+// }
+// let i = 0;
+// do {
+//   lastFilm = prompt('Один из последних посмотреных фильмов', '');
+//   lastFilmMark = +prompt('На сколько оцение его?', '');
+//   if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
+//     i++;
+//     personaMovieDB.movies[lastFilm] = +lastFilmMark;
+//   }
+// } while (i < 2);
+
+// while (i < 2) {
+//   lastFilm = prompt('Один из последних посмотреных фильмов', '');
+//   lastFilmMark = +prompt('На сколько оцение его?', '');
+//   if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
+//     i++;
+//     personaMovieDB.movies[lastFilm] = +lastFilmMark;
+//   }
+// }
+
+// personaMovieDB.movies[lastFilm] = +lastFilmMark;
+
+// while (!numberOfFilms || !lastFilm || lastFilm.length > 50 || !lastFilmMark) {
+//   numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+//   lastFilm = prompt('Один из последних посмотреных фильмов', '');
+//   lastFilmMark = +prompt('На сколько оцение его?', '');
+// }
+
+// if (personaMovieDB.count < 10) {
+//   window.alert('Просмотренно довольно мало фильмов');
+// } else if (personaMovieDB.count >= 10 && personaMovieDB.count <= 30) {
+//   window.alert('Вы класический зритель');
+// } else if (personaMovieDB.count > 30) {
+//   window.alert('Вы киноман');
+// } else {
+//   window.alert('Произошла ошибка');
+// }
+
+// console.log(personaMovieDB);
