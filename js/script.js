@@ -202,69 +202,111 @@
 // console.log(getMathResult(10, 0));
 // console.log(getMathResult(20, -5));
 
-let numberOfFilms = 0,
-  lastFilm = '',
-  lastFilmMark = '';
+// let numberOfFilms = 0,
+//   lastFilm = '',
+//   lastFilmMark = '';
 
-function start() {
-  while (!numberOfFilms) {
-    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+// function start() {
+//   while (!numberOfFilms) {
+//     numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+//   }
+// }
+
+// start();
+
+// const personaMovieDB = {
+//   count: numberOfFilms,
+//   movies: {},
+//   actors: {},
+//   genres: [],
+//   privat: false,
+// };
+
+// function rememberMyfilms() {
+//   for (let i = 0; i < 2; i++) {
+//     lastFilm = prompt('Один из последних посмотреных фильмов', '');
+//     lastFilmMark = +prompt('На сколько оцение его?', '');
+
+//     if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
+//       personaMovieDB.movies[lastFilm] = +lastFilmMark;
+//     } else {
+//       i--;
+//     }
+//   }
+// }
+
+// rememberMyfilms();
+
+// function writeYourGenres(obj) {
+//   while (obj.genres.length < 3) {
+//     obj.genres.push(
+//       prompt(`Ваш любимый жанр под номером ${obj.genres.length + 1}`)
+//     );
+//   }
+// }
+
+// writeYourGenres(personaMovieDB);
+
+// function detectPersonalLvl() {
+//   if (personaMovieDB.count < 10) {
+//     window.alert('Просмотренно довольно мало фильмов');
+//   } else if (personaMovieDB.count >= 10 && personaMovieDB.count <= 30) {
+//     window.alert('Вы класический зритель');
+//   } else if (personaMovieDB.count > 30) {
+//     window.alert('Вы киноман');
+//   } else {
+//     window.alert('Произошла ошибка');
+//   }
+// }
+
+// detectPersonalLvl();
+
+// function showMyDB(obj) {
+//   if (!obj?.privat) {
+//     console.log(obj);
+//   }
+// }
+
+// showMyDB(personaMovieDB);
+
+function calculateVolumeAndArea(number) {
+  if (
+    !number ||
+    !Number.isInteger(number) ||
+    number < 0 ||
+    typeof number !== 'number'
+  ) {
+    return 'При вычислении произошла ошибка';
   }
+  const volume = Math.pow(number, 3);
+  const area = 6 * Math.pow(number, 2);
+  return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
 }
 
-start();
+console.log(calculateVolumeAndArea(5));
+console.log(calculateVolumeAndArea(15));
+console.log(calculateVolumeAndArea(15.5));
+console.log(calculateVolumeAndArea('15'));
+console.log(calculateVolumeAndArea(-15));
 
-const personaMovieDB = {
-  count: numberOfFilms,
-  movies: {},
-  actors: {},
-  genres: [],
-  privat: false,
-};
-
-function rememberMyfilms() {
-  for (let i = 0; i < 2; i++) {
-    lastFilm = prompt('Один из последних посмотреных фильмов', '');
-    lastFilmMark = +prompt('На сколько оцение его?', '');
-
-    if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
-      personaMovieDB.movies[lastFilm] = +lastFilmMark;
-    } else {
-      i--;
+function getCoupeNumber(number) {
+  if (typeof number !== 'number' || !Number.isInteger(number) || number < 0) {
+    return 'Ошибка. Проверьте правильность введенного номера места';
+  } else if (number === 0 || number > 36) {
+    return 'Таких мест в вагоне не существует';
+  } else {
+    for (let i = 1; i <= 9; i++) {
+      if (number < i * 4) {
+        return i;
+      }
     }
   }
 }
 
-rememberMyfilms();
-
-function writeYourGenres(obj) {
-  while (obj.genres.length < 3) {
-    obj.genres.push(
-      prompt(`Ваш любимый жанр под номером ${obj.genres.length + 1}`)
-    );
-  }
-}
-
-writeYourGenres(personaMovieDB);
-
-function detectPersonalLvl() {
-  if (personaMovieDB.count < 10) {
-    window.alert('Просмотренно довольно мало фильмов');
-  } else if (personaMovieDB.count >= 10 && personaMovieDB.count <= 30) {
-    window.alert('Вы класический зритель');
-  } else if (personaMovieDB.count > 30) {
-    window.alert('Вы киноман');
-  } else {
-    window.alert('Произошла ошибка');
-  }
-}
-
-detectPersonalLvl();
-
-function showMyDB(obj) {
-  if (!obj?.privat) {
-    console.log(obj);
-  }
-}
-
-showMyDB(personaMovieDB);
+console.log(getCoupeNumber(33)); //9
+console.log(getCoupeNumber(7)); //2
+console.log(getCoupeNumber(300));
+console.log(getCoupeNumber(0));
+console.log(getCoupeNumber(7.7));
+console.log(getCoupeNumber(-10));
+console.log(getCoupeNumber('Hello'));
