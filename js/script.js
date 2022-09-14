@@ -269,44 +269,107 @@
 
 // showMyDB(personaMovieDB);
 
-function calculateVolumeAndArea(number) {
-  if (
-    !number ||
-    !Number.isInteger(number) ||
-    number < 0 ||
-    typeof number !== 'number'
-  ) {
-    return 'При вычислении произошла ошибка';
+// function calculateVolumeAndArea(number) {
+//   if (
+//     !number ||
+//     !Number.isInteger(number) ||
+//     number < 0 ||
+//     typeof number !== 'number'
+//   ) {
+//     return 'При вычислении произошла ошибка';
+//   }
+//   const volume = Math.pow(number, 3);
+//   const area = 6 * Math.pow(number, 2);
+//   return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
+// }
+
+// console.log(calculateVolumeAndArea(5));
+// console.log(calculateVolumeAndArea(15));
+// console.log(calculateVolumeAndArea(15.5));
+// console.log(calculateVolumeAndArea('15'));
+// console.log(calculateVolumeAndArea(-15));
+
+// function getCoupeNumber(number) {
+//   if (typeof number !== 'number' || !Number.isInteger(number) || number < 0) {
+//     return 'Ошибка. Проверьте правильность введенного номера места';
+//   } else if (number === 0 || number > 36) {
+//     return 'Таких мест в вагоне не существует';
+//   } else {
+//     for (let i = 1; i <= 9; i++) {
+//       if (number < i * 4) {
+//         return i;
+//       }
+//     }
+//   }
+// }
+
+// console.log(getCoupeNumber(33)); //9
+// console.log(getCoupeNumber(7)); //2
+// console.log(getCoupeNumber(300));
+// console.log(getCoupeNumber(0));
+// console.log(getCoupeNumber(7.7));
+// console.log(getCoupeNumber(-10));
+// console.log(getCoupeNumber('Hello'));
+
+function getTimeFromMinutes(number) {
+  if (number < 0 || !Number.isInteger(number) || typeof number !== 'number') {
+    return 'Ошибка, проверьте данные';
   }
-  const volume = Math.pow(number, 3);
-  const area = 6 * Math.pow(number, 2);
-  return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
-}
+  const hours = Math.floor(number / 60);
+  const minutes = number % 60;
 
-console.log(calculateVolumeAndArea(5));
-console.log(calculateVolumeAndArea(15));
-console.log(calculateVolumeAndArea(15.5));
-console.log(calculateVolumeAndArea('15'));
-console.log(calculateVolumeAndArea(-15));
-
-function getCoupeNumber(number) {
-  if (typeof number !== 'number' || !Number.isInteger(number) || number < 0) {
-    return 'Ошибка. Проверьте правильность введенного номера места';
-  } else if (number === 0 || number > 36) {
-    return 'Таких мест в вагоне не существует';
+  let message = '';
+  if (hours === 1) {
+    message = 'час';
+  } else if (hours > 0 && hours < 5) {
+    message = 'часа';
   } else {
-    for (let i = 1; i <= 9; i++) {
-      if (number < i * 4) {
-        return i;
-      }
+    message = 'часов';
+  }
+  return `Это ${hours} ${message} и ${minutes} минут`;
+}
+console.log(getTimeFromMinutes(90));
+console.log(getTimeFromMinutes(150));
+console.log(getTimeFromMinutes(50));
+console.log(getTimeFromMinutes(0));
+console.log(getTimeFromMinutes(-150));
+console.log(getTimeFromMinutes(600));
+
+function findMaxNumber(...numbers) {
+  for (let number of numbers) {
+    if (typeof number !== 'number') {
+      return 0;
     }
   }
+  if (numbers.length < 4) {
+    return 0;
+  }
+  const result = Math.max(...numbers);
+  return result;
 }
 
-console.log(getCoupeNumber(33)); //9
-console.log(getCoupeNumber(7)); //2
-console.log(getCoupeNumber(300));
-console.log(getCoupeNumber(0));
-console.log(getCoupeNumber(7.7));
-console.log(getCoupeNumber(-10));
-console.log(getCoupeNumber('Hello'));
+console.log(findMaxNumber(1, 5, 6.6, 11));
+console.log(findMaxNumber(1, 5, '6', '10'));
+console.log(findMaxNumber(1, 5, 11));
+
+function fib(number) {
+  if (typeof number !== 'number' || number === 0 || !Number.isInteger(number)) {
+    return '';
+  } else if (number === 1) {
+    return '0';
+  } else {
+    let result = [0, 1];
+    for (let i = 1; i < number - 1; i++) {
+      result.push(Number(result[i - 1]) + Number(result[i]));
+    }
+    const string = result.join(' ');
+    return string;
+  }
+}
+
+console.log(fib(0));
+console.log(fib(1));
+console.log(fib('r'));
+console.log(fib(2));
+console.log(fib(4));
+console.log(fib(7));
