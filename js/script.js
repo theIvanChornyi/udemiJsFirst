@@ -434,33 +434,66 @@
 //   else return -1;
 // }
 
-const personalPlanPeter = {
-  name: 'Peter',
-  age: '29',
-  skills: {
-    languages: ['ru', 'eng'],
-    programmingLangs: {
-      js: '20%',
-      php: '10%',
-    },
-    exp: '1 month',
-  },
-  showAgeAndLangs(obj) {
-    const languages = obj.skills.languages.join(' ').toUpperCase();
-    return `Мне ${obj.age} и я владею языками: ${languages}`;
-  },
-};
+// const personalPlanPeter = {
+//   name: 'Peter',
+//   age: '29',
+//   skills: {
+//     languages: ['ru', 'eng'],
+//     programmingLangs: {
+//       js: '20%',
+//       php: '10%',
+//     },
+//     exp: '1 month',
+//   },
+//   showAgeAndLangs(obj) {
+//     const languages = obj.skills.languages.join(' ').toUpperCase();
+//     return `Мне ${obj.age} и я владею языками: ${languages}`;
+//   },
+// };
 
-const showExperience = ({ skills: { exp } }) => exp;
-console.log(showExperience(personalPlanPeter));
+// const showExperience = ({ skills: { exp } }) => exp;
+// console.log(showExperience(personalPlanPeter));
 
-function showProgrammingLangs({ skills: { programmingLangs } }) {
-  let string = '';
-  for (let lang in programmingLangs) {
-    string += `Язык ${lang} изучен на ${programmingLangs[lang]}\n`;
+// function showProgrammingLangs({ skills: { programmingLangs } }) {
+//   let string = '';
+//   for (let lang in programmingLangs) {
+//     string += `Язык ${lang} изучен на ${programmingLangs[lang]}\n`;
+//   }
+//   return string;
+// }
+// console.log(showProgrammingLangs(personalPlanPeter));
+
+// console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
+
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+  if (arr.length === 0) {
+    return 'Семья пуста';
   }
-  return string;
+  const familyMembers = arr.join(' ');
+  return `Cемья состоит из: ${familyMembers}`;
 }
-console.log(showProgrammingLangs(personalPlanPeter));
 
-console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
+function showFamilys(arr) {
+  let str = '';
+
+  arr.length === 0 ? (str = 'Семья пуста') : (str = 'Семья состоит из: ');
+
+  arr.forEach(member => {
+    str += `${member} `;
+  });
+
+  return str;
+}
+
+console.log(showFamily(family));
+console.log(showFamilys(family));
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+  arr.forEach(a => console.log(a.toLowerCase()));
+}
+
+console.log(standardizeStrings(favoriteCities));
