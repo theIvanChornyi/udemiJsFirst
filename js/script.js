@@ -295,11 +295,12 @@
 //   } else if (number === 0 || number > 36) {
 //     return 'Таких мест в вагоне не существует';
 //   } else {
-//     for (let i = 1; i <= 9; i++) {
-//       if (number < i * 4) {
-//         return i;
-//       }
-//     }
+//     // for (let i = 1; i <= 9; i++) {
+//     //   if (number < i * 4) {
+//     //     return i;
+//     //   }
+//     // }
+//     return Math.ceil(number / 4);
 //   }
 // }
 
@@ -311,65 +312,155 @@
 // console.log(getCoupeNumber(-10));
 // console.log(getCoupeNumber('Hello'));
 
-function getTimeFromMinutes(number) {
-  if (number < 0 || !Number.isInteger(number) || typeof number !== 'number') {
-    return 'Ошибка, проверьте данные';
-  }
-  const hours = Math.floor(number / 60);
-  const minutes = number % 60;
+// function getTimeFromMinutes(number) {
+//   if (number < 0 || !Number.isInteger(number) || typeof number !== 'number') {
+//     return 'Ошибка, проверьте данные';
+//   }
+//   const hours = Math.floor(number / 60);
+//   const minutes = number % 60;
 
-  let message = '';
-  if (hours === 1) {
-    message = 'час';
-  } else if (hours > 0 && hours < 5) {
-    message = 'часа';
-  } else {
-    message = 'часов';
+//   let message = '';
+//   if (hours === 1) {
+//     message = 'час';
+//   } else if (hours > 0 && hours < 5) {
+//     message = 'часа';
+//   } else {
+//     message = 'часов';
+//   }
+//   return `Это ${hours} ${message} и ${minutes} минут`;
+// }
+// console.log(getTimeFromMinutes(90));
+// console.log(getTimeFromMinutes(150));
+// console.log(getTimeFromMinutes(50));
+// console.log(getTimeFromMinutes(0));
+// console.log(getTimeFromMinutes(-150));
+// console.log(getTimeFromMinutes(600));
+
+// function findMaxNumber(...numbers) {
+//   for (let number of numbers) {
+//     if (typeof number !== 'number') {
+//       return 0;
+//     }
+//   }
+//   if (numbers.length < 4) {
+//     return 0;
+//   }
+//   const result = Math.max(...numbers);
+//   return result;
+// }
+
+// console.log(findMaxNumber(1, 5, 6.6, 11));
+// console.log(findMaxNumber(1, 5, '6', '10'));
+// console.log(findMaxNumber(1, 5, 11));
+
+// function fib(number) {
+//   if (typeof number !== 'number' || number === 0 || !Number.isInteger(number)) {
+//     return '';
+//   } else if (number === 1) {
+//     return '0';
+//   } else {
+//     let result = [0, 1];
+//     for (let i = 1; i < number - 1; i++) {
+//       result.push(Number(result[i - 1]) + Number(result[i]));
+//     }
+//     const string = result.join(' ');
+//     return string;
+//   }
+// }
+
+// console.log(fib(0));
+// console.log(fib(1));
+// console.log(fib('r'));
+// console.log(fib(2));
+// console.log(fib(4));
+// console.log(fib(7));
+
+// function LinearSearch(t, A) {
+//   let n = A.length;
+//   let i = 0;
+
+//   while (A[i] !== t) {
+//     i++;
+//   }
+//   if (i < n) {
+//     return i;
+//   } else {
+//     return -1;
+//   }
+// }
+
+// console.log(LinearSearch(6, [2, 4, 6, 9, 8]));
+
+// function BinarySearch(t, A) {
+//   let i = 0,
+//     j = A.length,
+//     k;
+
+//   while (i < j) {
+//     k = Math.floor((i + j) / 2);
+//     if (t <= A[k]) {
+//       j = k;
+//     } else {
+//       i = k + 1;
+//     }
+//   }
+
+//   if (A[i] === t) {
+//     return i;
+//   } else {
+//     return -1;
+//   }
+// }
+
+// console.log(BinarySearch(6, [2, 4, 6, 9, 8]));
+
+// function InterpolationSearch(t, A) {
+//   // t - искомый элемент,
+//   // A - упорядоченный массив, в котором ищем.
+//   var mid,
+//     low = 0,
+//     high = A.length - 1;
+
+//   while (A[low] < t && A[high] > t) {
+//     mid = low + Math.floor(((t - A[low]) * (high - low)) / (A[high] - A[low]));
+//     if (A[mid] < t) low = mid + 1;
+//     else if (A[mid] > t) high = mid - 1;
+//     else return mid;
+//   }
+
+//   if (A[low] === t) return low; // На выходе индекс искомого элемента.
+//   else if (A[high] === t)
+//     return high; // Если искомого элемента нет в массиве, то -1.
+//   else return -1;
+// }
+
+const personalPlanPeter = {
+  name: 'Peter',
+  age: '29',
+  skills: {
+    languages: ['ru', 'eng'],
+    programmingLangs: {
+      js: '20%',
+      php: '10%',
+    },
+    exp: '1 month',
+  },
+  showAgeAndLangs(obj) {
+    const languages = obj.skills.languages.join(' ').toUpperCase();
+    return `Мне ${obj.age} и я владею языками: ${languages}`;
+  },
+};
+
+const showExperience = ({ skills: { exp } }) => exp;
+console.log(showExperience(personalPlanPeter));
+
+function showProgrammingLangs({ skills: { programmingLangs } }) {
+  let string = '';
+  for (let lang in programmingLangs) {
+    string += `Язык ${lang} изучен на ${programmingLangs[lang]}\n`;
   }
-  return `Это ${hours} ${message} и ${minutes} минут`;
+  return string;
 }
-console.log(getTimeFromMinutes(90));
-console.log(getTimeFromMinutes(150));
-console.log(getTimeFromMinutes(50));
-console.log(getTimeFromMinutes(0));
-console.log(getTimeFromMinutes(-150));
-console.log(getTimeFromMinutes(600));
+console.log(showProgrammingLangs(personalPlanPeter));
 
-function findMaxNumber(...numbers) {
-  for (let number of numbers) {
-    if (typeof number !== 'number') {
-      return 0;
-    }
-  }
-  if (numbers.length < 4) {
-    return 0;
-  }
-  const result = Math.max(...numbers);
-  return result;
-}
-
-console.log(findMaxNumber(1, 5, 6.6, 11));
-console.log(findMaxNumber(1, 5, '6', '10'));
-console.log(findMaxNumber(1, 5, 11));
-
-function fib(number) {
-  if (typeof number !== 'number' || number === 0 || !Number.isInteger(number)) {
-    return '';
-  } else if (number === 1) {
-    return '0';
-  } else {
-    let result = [0, 1];
-    for (let i = 1; i < number - 1; i++) {
-      result.push(Number(result[i - 1]) + Number(result[i]));
-    }
-    const string = result.join(' ');
-    return string;
-  }
-}
-
-console.log(fib(0));
-console.log(fib(1));
-console.log(fib('r'));
-console.log(fib(2));
-console.log(fib(4));
-console.log(fib(7));
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
