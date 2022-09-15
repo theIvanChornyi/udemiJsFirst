@@ -465,35 +465,68 @@
 
 // console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
 
-const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+// const family = ['Peter', 'Ann', 'Alex', 'Linda'];
 
-function showFamily(arr) {
-  if (arr.length === 0) {
-    return 'Семья пуста';
+// function showFamily(arr) {
+//   if (arr.length === 0) {
+//     return 'Семья пуста';
+//   }
+//   const familyMembers = arr.join(' ');
+//   return `Cемья состоит из: ${familyMembers}`;
+// }
+
+// function showFamilys(arr) {
+//   let str = '';
+
+//   arr.length === 0 ? (str = 'Семья пуста') : (str = 'Семья состоит из: ');
+
+//   arr.forEach(member => {
+//     str += `${member} `;
+//   });
+
+//   return str;
+// }
+
+// console.log(showFamily(family));
+// console.log(showFamilys(family));
+
+// const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+// function standardizeStrings(arr) {
+//   arr.forEach(a => console.log(a.toLowerCase()));
+// }
+
+// console.log(standardizeStrings(favoriteCities));
+
+const someString = 'This is some strange string';
+
+function reverse(str) {
+  if (typeof str !== 'string') {
+    return 'Ошибка!';
   }
-  const familyMembers = arr.join(' ');
-  return `Cемья состоит из: ${familyMembers}`;
+  return str
+    .split(' ')
+    .map(a => a.split('').reverse().join(''))
+    .reverse()
+    .join(' ');
 }
 
-function showFamilys(arr) {
-  let str = '';
+console.log(reverse(someString));
 
-  arr.length === 0 ? (str = 'Семья пуста') : (str = 'Семья состоит из: ');
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY', 'USD', 'EUR'];
 
-  arr.forEach(member => {
-    str += `${member} `;
-  });
+function availableCurr(arr, missingCurr) {
+  const newArr = [...arr];
+  if (arr.length === 0) {
+    return 'Нет доступных валют';
+  }
+  if (arguments.length === 2) {
+    const indexToDelete = arr.indexOf(missingCurr);
+    newArr.splice(indexToDelete, 1);
+  }
 
-  return str;
+  return `Доступные валюты: \n${newArr.join('\n')}`;
 }
 
-console.log(showFamily(family));
-console.log(showFamilys(family));
-
-const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
-
-function standardizeStrings(arr) {
-  arr.forEach(a => console.log(a.toLowerCase()));
-}
-
-console.log(standardizeStrings(favoriteCities));
+console.log(availableCurr(additionalCurrencies, 'CNY'));
