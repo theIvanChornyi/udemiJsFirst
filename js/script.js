@@ -527,74 +527,105 @@
 
 // console.log(availableCurr(additionalCurrencies, 'CNY'));
 
-let numberOfFilms = 0,
-  lastFilm = '',
-  lastFilmMark = '';
+// const personaMovieDB = {
+//   count: 0,
+//   movies: {},
+//   actors: {},
+//   genres: [],
+//   privat: false,
+//   start() {
+//     while (!this.count) {
+//       this.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+//     }
+//     this.rememberMyfilms();
+//   },
 
-const personaMovieDB = {
-  count: 0,
-  movies: {},
-  actors: {},
-  genres: [],
-  privat: false,
-  start() {
-    while (!this.count) {
-      this.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
-    }
-    this.rememberMyfilms();
-  },
+//   rememberMyfilms() {
+//     for (let i = 0; i < 2; i++) {
+//       let lastFilm = prompt('Один из последних посмотреных фильмов', '');
+//       let lastFilmMark = +prompt('На сколько оцение его?', '');
 
-  rememberMyfilms() {
-    for (let i = 0; i < 2; i++) {
-      lastFilm = prompt('Один из последних посмотреных фильмов', '');
-      lastFilmMark = +prompt('На сколько оцение его?', '');
+//       if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
+//         this.movies[lastFilm] = +lastFilmMark;
+//       } else {
+//         i--;
+//       }
+//     }
+//     this.writeYourGenres();
+//   },
+//   writeYourGenres() {
+//     for (let i = 1; i <= 3; i++) {
+//       const request = prompt(`Ваш любимый жанр под номером ${i}`);
+//       if (!request) {
+//         i--;
+//       } else {
+//         this.genres.push(request);
+//       }
+//     }
+//     this.genres.forEach((ganre, index) =>
+//       console.log(`Любимый жанр # ${index + 1} - Это ${ganre}`)
+//     );
+//     this.detectPersonalLvl();
+//   },
+//   detectPersonalLvl() {
+//     this.showMyDB();
 
-      if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
-        this.movies[lastFilm] = +lastFilmMark;
-      } else {
-        i--;
-      }
-    }
-    this.writeYourGenres();
-  },
-  writeYourGenres() {
-    for (let i = 1; i <= 3; i++) {
-      const request = prompt(`Ваш любимый жанр под номером ${i}`);
-      if (!request) {
-        i--;
-      } else {
-        this.genres.push(request);
-      }
-    }
-    this.genres.forEach((ganre, index) =>
-      console.log(`Любимый жанр # ${index + 1} - Это ${ganre}`)
-    );
-    this.detectPersonalLvl();
-  },
-  detectPersonalLvl() {
-    this.showMyDB();
+//     if (this.count < 10) {
+//       window.alert('Просмотренно довольно мало фильмов');
+//     } else if (this.count >= 10 && this.count <= 30) {
+//       window.alert('Вы класический зритель');
+//     } else if (this.count > 30) {
+//       window.alert('Вы киноман');
+//     } else {
+//       window.alert('Произошла ошибка');
+//     }
+//   },
+//   showMyDB() {
+//     if (!this?.privat) {
+//       console.log(this);
+//     }
+//   },
+//   toggleVisibleMyDb() {
+//     this.privat = !this.privat;
+//   },
+// };
+// // personaMovieDB.start();
+// personaMovieDB.toggleVisibleMyDb();
+// // personaMovieDB.start();
+// personaMovieDB.toggleVisibleMyDb();
+// // personaMovieDB.start();
 
-    if (this.count < 10) {
-      window.alert('Просмотренно довольно мало фильмов');
-    } else if (this.count >= 10 && this.count <= 30) {
-      window.alert('Вы класический зритель');
-    } else if (this.count > 30) {
-      window.alert('Вы киноман');
-    } else {
-      window.alert('Произошла ошибка');
-    }
-  },
-  showMyDB() {
-    if (!this?.privat) {
-      console.log(this);
-    }
-  },
-  toggleVisibleMyDb() {
-    this.privat = !this.privat;
-  },
+const shoppingMallData = {
+  shops: [
+    {
+      width: 10,
+      length: 5,
+    },
+    {
+      width: 15,
+      length: 7,
+    },
+    {
+      width: 20,
+      length: 5,
+    },
+    {
+      width: 8,
+      length: 10,
+    },
+  ],
+  height: 5,
+  moneyPer1m3: 30,
+  budget: 50000,
 };
-// personaMovieDB.start();
-personaMovieDB.toggleVisibleMyDb();
-// personaMovieDB.start();
-personaMovieDB.toggleVisibleMyDb();
-// personaMovieDB.start();
+
+function isBudgetEnough({ shops, height, moneyPer1m3, budget }) {
+  const allShopsVolume = [...shops].reduce((acc, { width, length }) => {
+    return (acc += width * length * height * moneyPer1m3);
+  }, 0);
+  return budget - allShopsVolume > 0
+    ? 'Бюджета достаточно'
+    : 'Бюджета недостаточно';
+}
+
+console.log(isBudgetEnough(shoppingMallData));
