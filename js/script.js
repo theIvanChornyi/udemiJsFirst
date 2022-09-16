@@ -498,35 +498,103 @@
 
 // console.log(standardizeStrings(favoriteCities));
 
-const someString = 'This is some strange string';
+// const someString = 'This is some strange string';
 
-function reverse(str) {
-  if (typeof str !== 'string') {
-    return 'Ошибка!';
-  }
-  return str
-    .split(' ')
-    .map(a => a.split('').reverse().join(''))
-    .reverse()
-    .join(' ');
-}
+// function reverse(str) {
+//   if (typeof str !== 'string') {
+//     return 'Ошибка!';
+//   }
+//   return str.split('').reverse().join('');
+// }
 
-console.log(reverse(someString));
+// console.log(reverse(someString));
 
-const baseCurrencies = ['USD', 'EUR'];
-const additionalCurrencies = ['UAH', 'RUB', 'CNY', 'USD', 'EUR'];
+// const baseCurrencies = ['USD', 'EUR'];
+// const additionalCurrencies = ['UAH', 'RUB', 'CNY', 'USD', 'EUR'];
 
-function availableCurr(arr, missingCurr) {
-  const newArr = [...arr];
-  if (arr.length === 0) {
-    return 'Нет доступных валют';
-  }
-  if (arguments.length === 2) {
-    const indexToDelete = arr.indexOf(missingCurr);
-    newArr.splice(indexToDelete, 1);
-  }
+// function availableCurr(arr, missingCurr) {
+//   const newArr = [...arr];
+//   if (arr.length === 0) {
+//     return 'Нет доступных валют';
+//   }
+//   if (arguments.length === 2) {
+//     const indexToDelete = arr.indexOf(missingCurr);
+//     newArr.splice(indexToDelete, 1);
+//   }
 
-  return `Доступные валюты: \n${newArr.join('\n')}`;
-}
+//   return `Доступные валюты: \n${newArr.join('\n')}`;
+// }
 
-console.log(availableCurr(additionalCurrencies, 'CNY'));
+// console.log(availableCurr(additionalCurrencies, 'CNY'));
+
+let numberOfFilms = 0,
+  lastFilm = '',
+  lastFilmMark = '';
+
+const personaMovieDB = {
+  count: 0,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+  start() {
+    while (!this.count) {
+      this.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+    this.rememberMyfilms();
+  },
+
+  rememberMyfilms() {
+    for (let i = 0; i < 2; i++) {
+      lastFilm = prompt('Один из последних посмотреных фильмов', '');
+      lastFilmMark = +prompt('На сколько оцение его?', '');
+
+      if (lastFilm && lastFilm.length < 50 && lastFilmMark) {
+        this.movies[lastFilm] = +lastFilmMark;
+      } else {
+        i--;
+      }
+    }
+    this.writeYourGenres();
+  },
+  writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+      const request = prompt(`Ваш любимый жанр под номером ${i}`);
+      if (!request) {
+        i--;
+      } else {
+        this.genres.push(request);
+      }
+    }
+    this.genres.forEach((ganre, index) =>
+      console.log(`Любимый жанр # ${index + 1} - Это ${ganre}`)
+    );
+    this.detectPersonalLvl();
+  },
+  detectPersonalLvl() {
+    this.showMyDB();
+
+    if (this.count < 10) {
+      window.alert('Просмотренно довольно мало фильмов');
+    } else if (this.count >= 10 && this.count <= 30) {
+      window.alert('Вы класический зритель');
+    } else if (this.count > 30) {
+      window.alert('Вы киноман');
+    } else {
+      window.alert('Произошла ошибка');
+    }
+  },
+  showMyDB() {
+    if (!this?.privat) {
+      console.log(this);
+    }
+  },
+  toggleVisibleMyDb() {
+    this.privat = !this.privat;
+  },
+};
+// personaMovieDB.start();
+personaMovieDB.toggleVisibleMyDb();
+// personaMovieDB.start();
+personaMovieDB.toggleVisibleMyDb();
+// personaMovieDB.start();
