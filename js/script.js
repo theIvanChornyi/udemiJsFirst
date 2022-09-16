@@ -595,37 +595,64 @@
 // personaMovieDB.toggleVisibleMyDb();
 // // personaMovieDB.start();
 
-const shoppingMallData = {
-  shops: [
-    {
-      width: 10,
-      length: 5,
-    },
-    {
-      width: 15,
-      length: 7,
-    },
-    {
-      width: 20,
-      length: 5,
-    },
-    {
-      width: 8,
-      length: 10,
-    },
-  ],
-  height: 5,
-  moneyPer1m3: 30,
-  budget: 50000,
-};
+// const shoppingMallData = {
+//   shops: [
+//     {
+//       width: 10,
+//       length: 5,
+//     },
+//     {
+//       width: 15,
+//       length: 7,
+//     },
+//     {
+//       width: 20,
+//       length: 5,
+//     },
+//     {
+//       width: 8,
+//       length: 10,
+//     },
+//   ],
+//   height: 5,
+//   moneyPer1m3: 30,
+//   budget: 50000,
+// };
 
-function isBudgetEnough({ shops, height, moneyPer1m3, budget }) {
-  const allShopsVolume = [...shops].reduce((acc, { width, length }) => {
-    return (acc += width * length * height * moneyPer1m3);
-  }, 0);
-  return budget - allShopsVolume > 0
-    ? 'Бюджета достаточно'
-    : 'Бюджета недостаточно';
+// function isBudgetEnough({ shops, height, moneyPer1m3, budget }) {
+//   const allShopsVolume = [...shops].reduce((acc, { width, length }) => {
+//     return (acc += width * length * height * moneyPer1m3);
+//   }, 0);
+//   return budget - allShopsVolume > 0
+//     ? 'Бюджета достаточно'
+//     : 'Бюджета недостаточно';
+// }
+
+// console.log(isBudgetEnough(shoppingMallData));
+
+const students = [
+  'Peter',
+  'Andrew',
+  'Ann',
+  'Mark',
+  'Josh',
+  'Sandra',
+  'Cris',
+  'Bernard',
+  'Takesi',
+  'Sam',
+];
+
+function sortStudentsByGroups(arr) {
+  const result = [],
+    sortArr = arr.sort((a, b) => a.localeCompare(b));
+  console.log('sortArr', sortArr);
+  for (let i = 0; i < 3; i++) {
+    result.push(sortArr.splice(0, 3));
+  }
+  result.push(
+    `Оставшиеся студенты: ${sortArr.length > 0 ? sortArr.join(', ') : '-'}`
+  );
+  return result;
 }
-
-console.log(isBudgetEnough(shoppingMallData));
+console.log(sortStudentsByGroups(students));
