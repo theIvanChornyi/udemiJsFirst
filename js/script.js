@@ -630,29 +630,112 @@
 
 // console.log(isBudgetEnough(shoppingMallData));
 
-const students = [
-  'Peter',
-  'Andrew',
-  'Ann',
-  'Mark',
-  'Josh',
-  'Sandra',
-  'Cris',
-  'Bernard',
-  'Takesi',
-  'Sam',
-];
+// const students = [
+//   'Peter',
+//   'Andrew',
+//   'Ann',
+//   'Mark',
+//   'Josh',
+//   'Sandra',
+//   'Cris',
+//   'Bernard',
+//   'Takesi',
+//   'Sam',
+// ];
 
-function sortStudentsByGroups(arr) {
-  const result = [],
-    sortArr = arr.sort((a, b) => a.localeCompare(b));
-  console.log('sortArr', sortArr);
-  for (let i = 0; i < 3; i++) {
-    result.push(sortArr.splice(0, 3));
-  }
-  result.push(
-    `Оставшиеся студенты: ${sortArr.length > 0 ? sortArr.join(', ') : '-'}`
-  );
-  return result;
+// function sortStudentsByGroups(arr) {
+//   const result = [],
+//     sortArr = arr.sort((a, b) => a.localeCompare(b));
+//   console.log('sortArr', sortArr);
+//   for (let i = 0; i < 3; i++) {
+//     result.push(sortArr.splice(0, 3));
+//   }
+//   result.push(
+//     `Оставшиеся студенты: ${sortArr.length > 0 ? sortArr.join(', ') : '-'}`
+//   );
+//   return result;
+// }
+// console.log(sortStudentsByGroups(students));
+
+// let x = 5;
+// alert(++x);
+// console.log([] + false - null + true);
+// let y = 1;
+// let x = y = 2;
+// alert(x);
+// console.log([ ]+ 1 + 2);
+// alert( '1'[0] );
+// console.log(2 && 1 && null && 0 && undefined);
+// console.log(!!( 1 && 2 ));
+//   console.log(1 && 2);
+// console.log(alert( null || 2 && 3 || 4 ));
+// const a = [1, 2, 3],
+// b = [1, 2, 3];
+// console.log(a==b);
+// alert( +Infinity );
+// console.log('Ёжик' > 'яблоко');
+// console.log(0 || '' || 2 || undefined || true || false);
+
+const restorantData = {
+  menu: [
+    {
+      name: 'Salad Caesar',
+      price: '14$',
+    },
+    {
+      name: 'Pizza Diavola',
+      price: '9$',
+    },
+    {
+      name: 'Beefsteak',
+      price: '17$',
+    },
+    {
+      name: 'Napoleon',
+      price: '7$',
+    },
+  ],
+  waitors: [
+    { name: 'Alice', age: 22 },
+    { name: 'John', age: 24 },
+  ],
+  averageLunchPrice: '20$',
+  openNow: true,
+};
+
+function isOpen(prop) {
+  let answer = '';
+  !prop ? (answer = 'Закрыто') : (answer = 'Открыто');
+
+  return answer;
 }
-console.log(sortStudentsByGroups(students));
+
+console.log(isOpen(restorantData.openNow));
+
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+  if (
+    parseInt(fDish.price, 10) + parseInt(sDish.price, 10) <
+    parseInt(average, 10)
+  ) {
+    return 'Цена ниже средней';
+  } else {
+    return 'Цена выше средней';
+  }
+}
+
+console.log(
+  isAverageLunchPriceTrue(
+    restorantData.menu[3],
+    restorantData.menu[1],
+    restorantData.averageLunchPrice
+  )
+);
+
+function transferWaitors(data) {
+  const copy = JSON.parse(JSON.stringify(data));
+
+  copy.waitors[0] = { name: 'Mike', age: 32 };
+  return copy;
+}
+
+transferWaitors(restorantData);
