@@ -739,3 +739,16 @@
 // }
 
 // transferWaitors(restorantData);
+
+function factorial(number) {
+  if (typeof number !== 'number' || !Number.isInteger(number)) {
+    return 'Введите целое число';
+  } else if (number <= 0) {
+    return 1;
+  } else {
+    return (number *= factorial(number - 1));
+  }
+}
+
+console.log(factorial(4));
+console.log(factorial(5));
