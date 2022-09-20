@@ -740,15 +740,34 @@
 
 // transferWaitors(restorantData);
 
-function factorial(number) {
-  if (typeof number !== 'number' || !Number.isInteger(number)) {
-    return 'Введите целое число';
-  } else if (number <= 0) {
-    return 1;
-  } else {
-    return (number *= factorial(number - 1));
+// function factorial(number) {
+//   if (typeof number !== 'number' || !Number.isInteger(number)) {
+//     return 'Введите целое число';
+//   } else if (number <= 0) {
+//     return 1;
+//   } else {
+//     return (number *= factorial(number - 1));
+//   }
+// }
+
+// console.log(factorial(4));
+// console.log(factorial(5));
+
+function amountOfPages(summary) {
+  if (typeof summary !== 'number' || !Number.isInteger(summary)) {
+    return 'Введи челое число';
+  }
+  let result = '';
+
+  for (let i = 1; i <= summary; i++) {
+    result += i;
+    if (result.length === summary) {
+      return i;
+    }
   }
 }
 
-console.log(factorial(4));
-console.log(factorial(5));
+console.log(amountOfPages(5));
+console.log(amountOfPages(25));
+console.log(amountOfPages(1095));
+console.log(amountOfPages(185));
