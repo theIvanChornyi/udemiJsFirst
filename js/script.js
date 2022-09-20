@@ -753,21 +753,86 @@
 // console.log(factorial(4));
 // console.log(factorial(5));
 
-function amountOfPages(summary) {
-  if (typeof summary !== 'number' || !Number.isInteger(summary)) {
-    return 'Введи челое число';
-  }
-  let result = '';
+// function amountOfPages(summary) {
+//   if (typeof summary !== 'number' || !Number.isInteger(summary)) {
+//     return 'Введи челое число';
+//   }
+//   let result = '';
 
-  for (let i = 1; i <= summary; i++) {
-    result += i;
-    if (result.length === summary) {
-      return i;
+//   for (let i = 1; i <= summary; i++) {
+//     result += i;
+//     if (result.length === summary) {
+//       return i;
+//     }
+//   }
+// }
+
+// console.log(amountOfPages(5));
+// console.log(amountOfPages(25));
+// console.log(amountOfPages(1095));
+// console.log(amountOfPages(185));
+
+// Мой вариант
+
+function isPangram(string) {
+  const abet = 'abcdefghijklmnopqrstuvwxyz';
+  const clearString = string.toLowerCase();
+  for (const a of abet) {
+    if (!clearString.includes(a)) {
+      return false;
     }
+    return true;
   }
 }
+console.log(isPangram('The quick brown fox jumps over the lazy dog'));
+console.log(isPangram('Hello world'));
 
-console.log(amountOfPages(5));
-console.log(amountOfPages(25));
-console.log(amountOfPages(1095));
-console.log(amountOfPages(185));
+// function isPangram(string) {
+//   string = string.toLowerCase();
+//   return 'abcdefghijklmnopqrstuvwxyz'.split('').every(function (x) {
+//     return string.indexOf(x) !== -1;
+//   });
+// }
+
+// // С другим методом и строка каждый раз преобразовывается в коллбэке
+// function isPangram(string) {
+//   return 'abcdefghijklmnopqrstuvwxyz'
+//     .split('')
+//     .every(x => string.toLowerCase().includes(x));
+// }
+
+// // При помощи цикла
+// function isPangram(str) {
+//   letters: for (var c = 0; c < 26; c++) {
+//     for (let i = 0; i < str.length; i++) {
+//       let s = str.charCodeAt(i);
+//       if (s < 65 || (s > 90 && s < 97) || s > 122) {
+//         continue;
+//       }
+//       if (s === 65 + c || s === 97 + c) {
+//         continue letters;
+//       }
+//     }
+
+//     return false;
+//   }
+
+//   return true;
+// }
+
+// // При помощи Set
+// function isPangram(string) {
+//   return (
+//     new Set(
+//       string
+//         .toLocaleLowerCase()
+//         .replace(/[^a-z]/gi, '')
+//         .split('')
+//     ).size === 26
+//   );
+// }
+
+// // С использованием регулярных выражений
+// function isPangram(string) {
+//   return (string.match(/([a-z])(?!.*\1)/gi) || []).length === 26;
+// }
