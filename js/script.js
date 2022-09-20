@@ -774,18 +774,18 @@
 
 // Мой вариант
 
-function isPangram(string) {
-  const abet = 'abcdefghijklmnopqrstuvwxyz';
-  const clearString = string.toLowerCase();
-  for (const a of abet) {
-    if (!clearString.includes(a)) {
-      return false;
-    }
-    return true;
-  }
-}
-console.log(isPangram('The quick brown fox jumps over the lazy dog'));
-console.log(isPangram('Hello world'));
+// function isPangram(string) {
+//   const abet = 'abcdefghijklmnopqrstuvwxyz';
+//   const clearString = string.toLowerCase();
+//   for (const a of abet) {
+//     if (!clearString.includes(a)) {
+//       return false;
+//     }
+//     return true;
+//   }
+// }
+// console.log(isPangram('The quick brown fox jumps over the lazy dog'));
+// console.log(isPangram('Hello world'));
 
 // function isPangram(string) {
 //   string = string.toLowerCase();
@@ -836,3 +836,21 @@ console.log(isPangram('Hello world'));
 // function isPangram(string) {
 //   return (string.match(/([a-z])(?!.*\1)/gi) || []).length === 26;
 // }
+
+function deepCount(a) {
+  let number = a.length;
+
+  for (let i = 0; i < a.length; i++) {
+    if (Array.isArray(a[i])) {
+      number += deepCount(a[i]);
+    }
+  }
+
+  return number;
+}
+
+console.log(deepCount([1, 5, 3]));
+console.log(deepCount(['1', 5, '3', ['10']]));
+console.log(deepCount([1, 2, [3, 4, [5]]]));
+console.log(deepCount([]));
+console.log(deepCount([[[[[[[[[]]]]]]]]]));
