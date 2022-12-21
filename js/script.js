@@ -904,3 +904,29 @@
 // console.log(showListOfFilms(films));
 // console.log(setFilmsIds(films));
 // console.log(checkFilms(tranformedArray));
+
+const funds = [
+  { amount: -1400 },
+  { amount: 2400 },
+  { amount: -1000 },
+  { amount: 500 },
+  { amount: 10400 },
+  { amount: -11400 },
+];
+
+const getPositiveIncomeAmount = data => {
+  return data.reduce((acc, item) => {
+    const { amount } = item;
+    return amount >= 0 ? acc + amount : acc;
+  }, 0);
+};
+
+const getTotalIncomeAmount = data => {
+  if (!data.some(item => item.amount < 0)) {
+    return getPositiveIncomeAmount(funds);
+  }
+  return data.reduce((acc, item) => acc + item.amount, 0);
+};
+
+console.log(getPositiveIncomeAmount(funds));
+console.log(getTotalIncomeAmount(funds));
