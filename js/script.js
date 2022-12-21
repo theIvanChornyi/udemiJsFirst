@@ -837,20 +837,70 @@
 //   return (string.match(/([a-z])(?!.*\1)/gi) || []).length === 26;
 // }
 
-function deepCount(a) {
-  let number = a.length;
+// function deepCount(a) {
+//   let number = a.length;
 
-  for (let i = 0; i < a.length; i++) {
-    if (Array.isArray(a[i])) {
-      number += deepCount(a[i]);
-    }
-  }
+//   for (let i = 0; i < a.length; i++) {
+//     if (Array.isArray(a[i])) {
+//       number += deepCount(a[i]);
+//     }
+//   }
 
-  return number;
-}
+//   return number;
+// }
 
-console.log(deepCount([1, 5, 3]));
-console.log(deepCount(['1', 5, '3', ['10']]));
-console.log(deepCount([1, 2, [3, 4, [5]]]));
-console.log(deepCount([]));
-console.log(deepCount([[[[[[[[[]]]]]]]]]));
+// console.log(deepCount([1, 5, 3]));
+// console.log(deepCount(['1', 5, '3', ['10']]));
+// console.log(deepCount([1, 2, [3, 4, [5]]]));
+// console.log(deepCount([]));
+// console.log(deepCount([[[[[[[[[]]]]]]]]]));
+
+// const films = [
+//   {
+//     name: 'Titanic',
+//     rating: 9,
+//   },
+//   {
+//     name: 'Die hard 5',
+//     rating: 5,
+//   },
+//   {
+//     name: 'Matrix',
+//     rating: 8,
+//   },
+//   {
+//     name: 'Some bad film',
+//     rating: 4,
+//   },
+// ];
+
+// function showGoodFilms(arr) {
+//   return arr.filter(film => film.rating >= 8);
+// }
+
+// function showListOfFilms(arr) {
+//   return arr.map(film => film.name).join(', ');
+// }
+
+// // function setFilmsIds(arr) {
+// //   return arr.map((film, index) => ({ ...film, id: index }));
+// // }
+
+// function setFilmsIds(arr) {
+//   return arr.map((film, index) => {
+//     const newObj = film;
+//     newObj.id = index;
+//     return newObj;
+//   });
+// }
+
+// const tranformedArray = setFilmsIds(films);
+
+// function checkFilms(arr) {
+//   return arr.every(film => film.hasOwnProperty('id'));
+// }
+
+// console.log(showGoodFilms(films));
+// console.log(showListOfFilms(films));
+// console.log(setFilmsIds(films));
+// console.log(checkFilms(tranformedArray));
