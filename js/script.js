@@ -905,28 +905,59 @@
 // console.log(setFilmsIds(films));
 // console.log(checkFilms(tranformedArray));
 
-const funds = [
-  { amount: -1400 },
-  { amount: 2400 },
-  { amount: -1000 },
-  { amount: 500 },
-  { amount: 10400 },
-  { amount: -11400 },
-];
+// const funds = [
+//   { amount: -1400 },
+//   { amount: 2400 },
+//   { amount: -1000 },
+//   { amount: 500 },
+//   { amount: 10400 },
+//   { amount: -11400 },
+// ];
 
-const getPositiveIncomeAmount = data => {
-  return data.reduce((acc, item) => {
-    const { amount } = item;
-    return amount >= 0 ? acc + amount : acc;
-  }, 0);
+// const getPositiveIncomeAmount = data => {
+//   return data.reduce((acc, item) => {
+//     const { amount } = item;
+//     return amount >= 0 ? acc + amount : acc;
+//   }, 0);
+// };
+
+// const getTotalIncomeAmount = data => {
+//   if (!data.some(item => item.amount < 0)) {
+//     return getPositiveIncomeAmount(funds);
+//   }
+//   return data.reduce((acc, item) => acc + item.amount, 0);
+// };
+
+// console.log(getPositiveIncomeAmount(funds));
+// console.log(getTotalIncomeAmount(funds));
+
+const multiply20 = price => price * 20;
+const divide100 = price => price / 100;
+const normalizePrice = price => price.toFixed(2);
+
+const compose = (...args) => {
+  return function (price) {
+    return args.reduceRight((prev, cur) => cur(prev), price);
+  };
 };
 
-const getTotalIncomeAmount = data => {
-  if (!data.some(item => item.amount < 0)) {
-    return getPositiveIncomeAmount(funds);
-  }
-  return data.reduce((acc, item) => acc + item.amount, 0);
+const discount = compose(normalizePrice, divide100, multiply20);
+
+console.log(discount(200.0));
+
+const add1 = function (a) {
+  return a + 1;
+};
+const addAll3 = function (a, b, c) {
+  return a + b + c;
 };
 
-console.log(getPositiveIncomeAmount(funds));
-console.log(getTotalIncomeAmount(funds));
+function composeWithArgs(...args) {
+  return args.reduceRight((prev, cur) => {
+    return function (...price) {
+      return cur(prev(...price));
+    };
+  });
+}
+
+console.log(composeWithArgs(add1, addAll3)(1, 2, 3));
